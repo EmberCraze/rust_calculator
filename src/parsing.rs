@@ -166,16 +166,11 @@ pub fn execute_postfix(postfix: Vec<String>) -> Result<String>{
             let mut second_element: f32 = 0.0;
 
             if number_stack.len() > 1 {
-                second_element_str = number_stack.last().unwrap().clone();
-                number_stack.pop();
-                first_element_str = number_stack.last().unwrap().clone();
-                number_stack.pop();
-
+                second_element_str = number_stack.pop().unwrap();
+                first_element_str = number_stack.pop().unwrap();
             }
             else if number_stack.len() == 1 {
-                first_element_str = number_stack.last().unwrap().clone();
-                number_stack.pop();
-                second_element_str = "0.0".to_string();
+                first_element_str = number_stack.pop().unwrap();
             }
             if !functions.contains(&first_element_str){
                 first_element = first_element_str.parse::<f32>().unwrap();
