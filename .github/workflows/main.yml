@@ -1,0 +1,62 @@
+name: build
+
+env:
+  RUST_BACKTRACE: 1
+
+jobs:
+  build:
+    name: build
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: hecrj/setup-rust-action@v1
+      with:
+        rust-version: stable
+        targets: wasm32-unknown-unknown
+    - run: npm ci
+    - run: npm run build
+    - uses: actions/upload-artifact@v1
+      with:
+        name: dist
+        path: dist
+
+  test:
+    name: test
+    runs-on: ubuntu-latest
+    if: github.ref != 'refs/heads/master'
+    needs: build
+    steps:
+    - uses: actions/checkout@v2
+    - uses: hecrj/setup-rust-action@v1
+    - uses: actions/download-artifact@v1
+      with:
+        name: dist
+    - run: sudo apt-get update && sudo apt-get install chromium-browser
+    - run: |
+        curl -LO https://github.com/svenstaro/miniserve/releases/download/v0.6.0/miniserve-linux-x86_64
+        chmod a+x miniserve-linux-x86_64
+        sudo mv miniserve-linux-x86_64 /usr/local/bin/miniserve
+    - uses: actions-rs/cargo@v1
+      with:
+        command: test
+
+  deploy:
+    name: deploy
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
+    needs: build
+    steps:
+    - uses: actions/download-artifact@v1
+      with:
+        name: dist
+    - uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: dist
+        cname: rust_calculator 
+
+on:
+  push:
+    branches: [master, staging, trying]
+  pull_request:
+    branches: [master]
