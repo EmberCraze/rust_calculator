@@ -1,5 +1,6 @@
 language: rust
 sudo: false
+on: push
 
 INSTALL_NODE_VIA_NVM: &INSTALL_NODE_VIA_NVM
                         |
