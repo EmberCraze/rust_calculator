@@ -1,0 +1,15 @@
+{
+  "name": "calculator-wasm",
+  "collaborators": [
+    "embercraze"
+  ],
+  "version": "0.1.0",
+  "files": [
+    "calculator_wasm_bg.wasm",
+    "calculator_wasm.js",
+    "calculator_wasm.d.ts"
+  ],
+  "module": "calculator_wasm.js",
+  "types": "calculator_wasm.d.ts",
+  "sideEffects": false
+}
