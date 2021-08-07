@@ -10,7 +10,7 @@
 
 ## About
 
-This is a wasm calculator using the rust programming language
+This is a wasm calculator using the rust programming language live at https://embercraze.github.io/rust_calculator/
 
 ## 🚴 Usage
 
