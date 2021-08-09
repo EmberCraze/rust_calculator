@@ -3,7 +3,8 @@
 - enter the www folder and run npm install
 - then run npm run start
 - Note:There is no need to rerun npm run start when modifying th js and html files
-
+# Bugs
+- When executing sqrt(x) by itself as an operation, we get error
 # Current Focus
 - Implementing division by 0 detection <span style="color:green">DONE</span>.
 - implementing 4 callable functions for the primary functions <span style="color:green">DONE</span>.
