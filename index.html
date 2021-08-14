@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+
+<style>
+    .calc_button {
+        border-style:hidden;
+        width:91px;
+        height:45px;
+        font-size: 30px;
+        outline: none;
+        border-radius: 4px;
+        box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 20px;
+    }
+    .calc_button-hover:hover {
+        background: #5d5d5d94;
+    }
+    .calc_button-active:active {
+        background: #5d5d5d;
+        top: 2px;
+    }
+</style>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Calculator</title>
+</head>
+
+<body>
+    <div class="container" style="width: 1137px;height: 157px;"></div>
+    <div class="container" style="width: 322px;height: 297px;">
+        <div style="padding-bottom: 5px;width: 550px;">
+            <textarea rows="1" cols="1" style="width: 370px;height: 51px;font-size: 18px;resize: none;white-space: nowrap;overflow: hidden" placeholder="Start typing" id="input_text_field"></textarea>
+            <textarea rows="1" cols="1" style="width: 150px;height: 51px;font-size: 18px;resize: none;white-space: nowrap;overflow: hidden" id="output_text_field"></textarea>
+        </div>
+        <div style="padding-bottom: 5px;width: 400px;">
+            <button class="btn btn-primary" id="showbtn" style="width: 91px;height: 45px;">Show/hide</button>
+            <button class="btn btn-primary" id="showbtn" style="width: 185px;height: 45px;background-color:transparent; color:transparent; outline:none; text-decoration: none; cursor: default; border:none;">_</button>
+            <button class="btn btn-primary" id="removebtn" style="width: 91px;height: 45px;">⌫</button>  
+        </div>
+        <div class="btn-group" role="group" style="width: 400px;height: 297px;" id="btn_group">
+            <div style="padding-bottom: 5px;">
+                <button class="calc_button calc_button-hover calc_button-active" type="button" id="button_1">1</button>
+                <button class="calc_button calc_button-hover calc_button-active" type="button" id="button_2">2</button>
+                <button class="calc_button calc_button-hover calc_button-active" type="button" id="button_3">3</button>
+                <button class="calc_button calc_button-hover calc_button-active" type="button" id="button_div">÷</button>
+            </div>
+            <div style="padding-bottom: 5px;">
+                <button class="calc_button calc_button-hover calc_button-active" type="button" id="button_4">4</button>
+                <button class="calc_button calc_button-hover calc_button-active" type="button" id="button_5">5</button>
+                <button class="calc_button calc_button-hover calc_button-active" type="button" id="button_6">6</button>
+                <button class="calc_button calc_button-hover calc_button-active" type="button" id="button_mult">x</button>
+            </div>
+            <div style="padding-bottom: 5px;">
+                <button class="calc_button calc_button-hover calc_button-active" type="button" id="button_7">7</button>
+                <button class="calc_button calc_button-hover calc_button-active" type="button" id="button_8">8</button>
+                <button class="calc_button calc_button-hover calc_button-active" type="button" id="button_9">9</button>
+                <button class="calc_button calc_button-hover calc_button-active" type="button" id="button_plus">+</button>
+            </div>
+            <div style="padding-bottom: 5px;">
+                <button class="calc_button calc_button-hover calc_button-active" type="button" id="button_0">0</button>
+                <button class="calc_button calc_button-hover calc_button-active" type="button" id="button_dot">.</button>
+                <button class="calc_button calc_button-hover calc_button-active" type="button" id="button_eq">=</button>
+                <button class="calc_button calc_button-hover calc_button-active" type="button" id="button_minus">-</button>
+            </div>
+        </div>
+           
+        </div>
+    <script type="module">
+        document.getElementById("showbtn").addEventListener("click", hide_buttons);
+        function hide_buttons() {
+            var x = document.getElementById("btn_group");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        };
+
+        document.getElementById("removebtn").addEventListener("click", remove_last_character);
+        function remove_last_character(){
+            var text = document.getElementById('input_text_field');
+            var modified_text = text.value.slice(0, -1);
+            text.value = modified_text;
+        }
+        document.getElementById("button_1").addEventListener("click", button_1_input);
+        function button_1_input() {
+            var text = document.getElementById('input_text_field');
+            text.value += '1';
+        }
+
+        document.getElementById("button_2").addEventListener("click", button_2_input);
+        function button_2_input() {
+            var text = document.getElementById('input_text_field');
+            text.value += '2';
+        }
+
+        document.getElementById("button_3").addEventListener("click", button_3_input);
+        function button_3_input() {
+            var text = document.getElementById('input_text_field');
+            text.value += '3';
+        }
+
+        document.getElementById("button_div").addEventListener("click", button_div_input);
+        function button_div_input() {
+            var text = document.getElementById('input_text_field');
+            text.value += '/';
+        }
+
+        document.getElementById("button_4").addEventListener("click", button_4_input);
+        function button_4_input() {
+            var text = document.getElementById('input_text_field');
+            text.value += '4';
+        }
+
+        document.getElementById("button_5").addEventListener("click", button_5_input);
+        function button_5_input() {
+            var text = document.getElementById('input_text_field');
+            text.value += '5';
+        }
+
+        document.getElementById("button_6").addEventListener("click", button_6_input);
+        function button_6_input() {
+            var text = document.getElementById('input_text_field');
+            text.value += '6';
+        }
+
+        document.getElementById("button_mult").addEventListener("click", button_mult_input);
+        function button_mult_input() {
+            var text = document.getElementById('input_text_field');
+            text.value += '*';
+        }
+
+        document.getElementById("button_7").addEventListener("click", button_7_input);
+        function button_7_input() {
+            var text = document.getElementById('input_text_field');
+            text.value += '7';
+        }
+
+        document.getElementById("button_8").addEventListener("click", button_8_input);
+        function button_8_input() {
+            var text = document.getElementById('input_text_field');
+            text.value += '8';
+        }
+        
+        document.getElementById("button_9").addEventListener("click", button_9_input);
+        function button_9_input() {
+            var text = document.getElementById('input_text_field');
+            text.value += '9';
+        }
+
+        document.getElementById("button_plus").addEventListener("click", button_plus_input);
+        function button_plus_input() {
+            var text = document.getElementById('input_text_field');
+            text.value += '+';
+        }
+
+        document.getElementById("button_0").addEventListener("click", button_0_input);
+        function button_0_input() {
+            var text = document.getElementById('input_text_field');
+            text.value += '0';
+        }
+
+        document.getElementById("button_dot").addEventListener("click", button_dot_input);
+        function button_dot_input() {
+            var text = document.getElementById('input_text_field');
+            text.value += '.';
+        }
+        
+        document.getElementById("button_minus").addEventListener("click", button_minus_input);
+        function button_minus_input() {
+            var text = document.getElementById('input_text_field');
+            text.value += '-';
+        }
+
+    </script>
+    <script src="./bootstrap.js"></script>
+</body>
+
+</html>
