@@ -6,6 +6,7 @@
 # Bugs
 - When executing sqrt(x) by itself as an operation, we get error
 - Floats are not supported
+- Floats do not support ,
 # Current Focus
 - Implementing division by 0 detection <span style="color:green">DONE</span>.
 - implementing 4 callable functions for the primary functions <span style="color:green">DONE</span>.
