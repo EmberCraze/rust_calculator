@@ -135,6 +135,7 @@ fn parse_input(input:&String, sign:char) -> Result<Vec<String>>{
     */
 
 ///gets a infix string and converts it to a postfix string vector
+//TODO remove all unwrap in the program to not encounter panics
 pub fn to_postfix(infix: &String) -> Vec<String>{
     return rust_prefix_to_postfix::reverse_polish_parsing(infix).unwrap();
 }
